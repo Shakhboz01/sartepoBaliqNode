@@ -34,26 +34,25 @@ app.use(bodyParser.json());
 let count = 0
 // let docRef = db.collection('test').doc(`hey${count}`);
 
-// schedule.scheduleJob('42 * * * * *', ()=>{
-//   console.log(`The answer to life, the universe, and everything!  ${count}`);
-//   try {
-//     db.collection('test').doc(`hey${count}`).set({
-//       first: 'Hello',
-//       last: 'Lovelace',
-//       born: 2002
-//     });
-//   } catch (error) {
-//     console.log(error)
-//   }
-//   count++
-// });
+schedule.scheduleJob('42 * * * * *', ()=>{
+  console.log(`The answer to life, the universe, and everything!  ${count}`);
+  try {
+    bot.sendMessage(1537240286, 'Received your message');
+  } catch (error) {
+    console.log(error)
+  }
+  count++
+});
+
 
 const callDate = () => {
   var date = new Date().toLocaleDateString().split('/')
   var arr = [date[2], date[0], date[1]].join('.')
   return arr
 }
-
+app.get('/',(req,res)=>{
+  res.json({success:true})
+})
 app.get('/upload', (req,res)=>{
   const storage = getStorage()
   res.json('hey')
