@@ -1,0 +1,25 @@
+{
+  "name": "newcafenode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.3.0",
+    "firebase-functions": "^4.1.0",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "firebase": "^9.14.0",
+    "node-schedule": "^2.1.0",
+    "node-telegram-bot-api": "^0.60.0"
+  }
+}
