@@ -72,7 +72,6 @@ app.get('/',(req,res)=>{
 })
 app.get('/upload', (req,res)=>{
   res.json('hey')
-  console.log('hey')
 })
 
 app.post('/order-details', async(req, res) => {
@@ -95,7 +94,6 @@ app.get('/get-check', async(req,res)=>{
     // }
     res.json({success:true, data: snapshot.data()})
   } catch (error) {
-    console.log(error)
     res.json({success:false,message:error})
   }
 })
@@ -210,17 +208,16 @@ app.post('/prod-not-enough', (req,res)=>{
   if(req.body.returned){
     message = `У вас было мало: ${name}, а теперь ${prodLeft}`
   }
-  console.log(message)
-  // bot.sendMessage(1537240286, message);
+  // console.log(message)
+  bot.sendMessage(1537240286, message);
 })
 
-app.get('/send',(req,res)=>{
-  bot.sendMessage(1537240286, 'Received your message');
-  res.send('send')
-})
+// app.get('/send',(req,res)=>{
+//   bot.sendMessage(1537240286, 'Received your message');
+//   res.send('send')
+// })
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
-
   // send a message to the chat acknowledging receipt of their message
   console.log('chatId',chatId)
 });
