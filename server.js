@@ -279,4 +279,4 @@ app.get('/todays_overall', (req,res) => {
   res.json({succ: true})
 })
 
-app.listen(process.env.PORT || 5000, ()=> console.log('server started on 5000'))
+app.listen(process.env.PORT || 5000, ()=> console.log('server has started on 5000'))
