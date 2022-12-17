@@ -43,7 +43,7 @@ let count = 0
 // schedule.scheduleJob('42 * * * * *', ()=>{
 //   console.log(`The answer to life, the universe, and everything!  ${count}`);
 //   try {
-//     bot.sendMessage(1537240286, 'Received your message');
+//     bot.sendMessage(931564452, 'Received your message');
 //   } catch (error) {
 //     console.log(error)
 //   }
@@ -118,11 +118,11 @@ app.get('/test', async(req, res)=>{
       totalsPeople += dailyData[index].количество_людей;
       totalsOrders += dailyData[index].заказы
       totalsIncome += dailyData[index].приход
-      bot.sendMessage(1537240286, message);
+      bot.sendMessage(931564452, message);
     }
     var message2 = `${callDate()} итого- Колиество людей: ${totalsPeople} | Приход: ${totalsIncome} | Заказы: ${totalsOrders}`
     setTimeout(() => {
-      bot.sendMessage(1537240286, message2);
+      bot.sendMessage(931564452, message2);
     }, 1000);
     res.json({success:true, data: dailyData})
   }else{
@@ -209,11 +209,11 @@ app.post('/prod-not-enough', (req,res)=>{
     message = `У вас было мало: ${name}, а теперь ${prodLeft}`
   }
   // console.log(message)
-  bot.sendMessage(1537240286, message);
+  bot.sendMessage(931564452, message);
 })
 
 // app.get('/send',(req,res)=>{
-//   bot.sendMessage(1537240286, 'Received your message');
+//   bot.sendMessage(931564452, 'Received your message');
 //   res.send('send')
 // })
 bot.on('message', (msg) => {
@@ -239,6 +239,16 @@ app.get('/incomes', async(req,res)=>{
     const snapshot = await db.collection('incomes').get();
     const incomesData = snapshot.docs.map(doc=>({...doc.data(),id:doc.id}))
     res.json({success:true, data: incomesData })
+  } catch (error) {
+   res.json({success:false, message: error})
+  }
+})
+
+app.get('/total-sales', async(req,res)=> {
+  try {
+    const snapshot = await db.collection('total-sales').doc('sales').get();
+    // const incomesData = snapshot.docs.map(doc=>({...doc.data(),id:doc.id}))
+    res.json({success:true, data: snapshot.data() })
   } catch (error) {
    res.json({success:false, message: error})
   }
